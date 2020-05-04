@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+HOW TO USE IT
 
-Things you may want to cover:
+* Download and unzip the file
 
-* Ruby version
+* Bundle install
 
-* System dependencies
+* Rail db:create
 
-* Configuration
+* Rail db: migrate
 
-* Database creation
+* Rail db:seed 
 
-* Database initialization
+* $ rails server
 
-* How to run the test suite
+* http://localhost:3000
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* HAVE FUN
