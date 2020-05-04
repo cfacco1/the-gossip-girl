@@ -1,0 +1,16 @@
+<div>
+  <p></p>
+</div>
+
+<div class= row style= "display: flex; flex-flow: row wrap; justify-content: space-around">
+    <% Gossip.all.each do |gossip| %>
+      <div class="card" style="width: 18rem">
+        <div class="card-body" style="background-color:#6bb6ff;">
+          <h5 class="card-title text-center" ><%= gossip.content %><br /></h5>
+          <p class="card-text text-center">- <%= gossip.user.first_name %></p>
+          <a href="/gossip/<%= gossip.id %>" class="btn btn-block" style="background-color: #ffffff;" >Gossip ici</a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
