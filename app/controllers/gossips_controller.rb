@@ -22,7 +22,7 @@ def update
 end
 
 def create
-  @gossip = Gossip.new(gossip_params)
+  @gossip = Gossip.new(title: params[:title], content: params[:content],  user: User.find(params[:user]))
   if @gossip.save
     redirect_to gossips_path
   else

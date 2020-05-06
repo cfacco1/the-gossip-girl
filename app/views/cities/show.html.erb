@@ -1,2 +1,20 @@
-<h1>Cities#show</h1>
-<p>Find me in app/views/cities/show.html.erb</p>
+<div class="container-fluid text-center">
+  <div class="welcome-text">
+    <h1>This is what happened in <%= @city.name %></h1>
+    <p>XOXO Gossip Girl <3</p>
+  </div>
+
+<div class= row style= "display: flex; flex-flow: row wrap; justify-content: space-around">
+    <% User.where(city_id: @city.id).each do |user| %>
+    <% Gossip.where(user_id: user.id).each do |gossip| %>
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="https://66.media.tumblr.com/7d3c0839ba15aefd9bd2347113788123/tumblr_nhzt3bGSQu1qc5p6yo1_500.gif" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%= gossip.title %></h5>
+    <p class="card-text"><%= gossip.user.first_name %></p>
+    <a href="<%= gossip_path(gossip.id) %>" class="btn btn-outline-primary btn-sm">More</a>
+  </div>
+</div>
+    <% end %>
+    <% end %>
+  </div>

@@ -1,5 +1,10 @@
 <h1> <%= @gossip.title %> </h1>
 
+<p> by <a href="/users/<%= @gossip.user.id %>"><%= @gossip.user.first_name%> <%= @gossip.user.last_name %></a>
+      from <a href="/cities/<%= @gossip.user.city.id %>"><%= @gossip.user.city.name %></a>
+    </p>
+
+
 <p> <%= @gossip.content %> </p>
 
 <p>

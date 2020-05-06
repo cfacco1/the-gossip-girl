@@ -1,2 +1,9 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container-fluid text-center">
+  <div class="welcome-text">
+  	<img class="img-thumbnail" src="https://images-mds.staticskynet.be/NewsFolder/w-350_h-396_s-1/le-couple-serena-et-nate_146005_w460.jpg" alt="Card image cap">
+    <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+    <p><%= @user.age %> years old and from <%=@user.city.name%> </p><br />
+    <p>How to contact this Gossiper : <%= @user.email %>"</p><br />
+    <p> Some info about this person: "<%= @user.description %>"</p><br />
+  </div>
+</div>
