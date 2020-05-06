@@ -1,2 +1,25 @@
-<h1>Gossips#index</h1>
-<p>Find me in app/views/gossips/index.html.erb</p>
+<div class="jumbotron">
+  <h1 class="display-4">XOXO, Gossip Girl here</h1>
+  <p class="lead"></p>
+  <hr class="my-4">
+  <p>You're one and only source into the scandalous life of Manhattan's elite.</p>
+  <p class="lead">
+    <a class="btn btn-outline-success btn-lg" href="<%= new_gossip_path %>" role="button">Post a gossip</a>
+  </p>
+</div>
+
+<div class= row style= "display: flex; flex-flow: row wrap; justify-content: space-around">
+    <% @gossips.each do |gossip| %>
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="https://photos.lci.fr/images/613/344/gossip-girl-d3099a-0@1x.jpeg" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%= gossip.title %></h5>
+    <p class="card-text"><%= gossip.user.first_name %></p>
+    <a href="<%= gossip_path(gossip.id) %>" class="btn btn-outline-primary btn-sm">More</a>
+    <a href="<%= edit_gossip_path(gossip.id) %>" class="btn btn-outline-success btn-sm">Edit</a>
+    <a href="<%= gossip_path(gossip.id) %>" class="btn btn-outline-danger btn-sm" data-confirm="êtes vous sûr?" data-method="delete" >Delete</a>
+  </div>
+</div>
+    <% end %>
+  </div>
+</div>
