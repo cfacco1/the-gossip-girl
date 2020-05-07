@@ -1,5 +1,5 @@
 class CitiesController < ApplicationController
-    def index
+  def index
     @city = City.all
   end
 

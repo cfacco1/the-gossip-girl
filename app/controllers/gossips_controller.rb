@@ -1,48 +1,48 @@
 class GossipsController < ApplicationController
   before_action :authenticate_user, only: [:new, :create, :show]
 
-def index
+  def index
     @gossips = Gossip.all
   end
 
-def new
-  @gossip= Gossip.new
-end
+  def new
+    @gossip= Gossip.new
+  end
 
-def show
+  def show
     @gossip = Gossip.find(params[:id])
   end
 
-def edit
+  def edit
     @gossip = Gossip.find(params[:id])
-    if current_user == @gossip.user
-    else
-      flash[:danger] = "You're not the author of this gossip"
-      redirect_to new_session_path
-    end
-end
+      if current_user == @gossip.user
+      else
+        flash[:danger] = "You're not the author of this gossip"
+        redirect_to new_session_path
+      end
+  end
 
-def update
+  def update
     @gossip = Gossip.find(params[:id])
-    if @gossip.update('title' => params[:title], 'content' => params[:content], 'user_id' => @gossip.user_id)
-      flash[:success] = "Gossip modified !"
+      if @gossip.update('title' => params[:title], 'content' => params[:content], 'user_id' => @gossip.user_id)
+        flash[:success] = "Gossip modified !"
+        redirect_to @gossip
+      else
+        flash[:notice] = "You've made mistakes...You've made massive, heartbreaking mistakes "
+        render :edit
+      end
+  end
+
+  def create
+    @gossip = Gossip.new('title' => params[:title], 'content' => params[:content], 'user_id' => current_user.id)
+    @gossip.user = current_user
+    if @gossip.save
+      flash[:success] = "There's only one queen bitch in this town and that's me"
       redirect_to @gossip
     else
-      flash[:notice] = "You've made mistakes...You've made massive, heartbreaking mistakes "
-      render :edit
+      render :new
     end
-end
-
-def create
-  @gossip = Gossip.new('title' => params[:title], 'content' => params[:content], 'user_id' => current_user.id)
-  @gossip.user = current_user
-  if @gossip.save
-    flash[:success] = "There's only one queen bitch in this town and that's me"
-    redirect_to @gossip
-  else
-    render :new
   end
-end
 
   def destroy
     @gossip = Gossip.find(params[:id])
@@ -64,4 +64,5 @@ end
       redirect_to new_session_path
     end
   end
+  
 end
