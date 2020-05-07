@@ -24,13 +24,18 @@ class GossipsController < ApplicationController
 
   def update
     @gossip = Gossip.find(params[:id])
-      if @gossip.update('title' => params[:title], 'content' => params[:content], 'user_id' => @gossip.user_id)
-        flash[:success] = "Gossip modified !"
+    if current_user. == @gossip.user
+        gossip_params = params.require(:gossip).permit(:title, :content)
+      if @gossip.update(gossip_params)
+        flash[:success] = "Gossip modified"
         redirect_to @gossip
       else
-        flash[:notice] = "You've made mistakes...You've made massive, heartbreaking mistakes "
         render :edit
       end
+    else
+      flash[:danger] = "You're not the author of this gossip"
+      redirect_to @gossip
+    end
   end
 
   def create
