@@ -17,6 +17,7 @@ end
     last_name: Faker::Name.last_name, 
     description: Faker::Hipster.sentence, 
     email: Faker::Internet.email,
+    password_digest: 'password',
     age: rand(16..88),
     city: City.all.sample
     )
@@ -24,7 +25,7 @@ end
 
 20.times do
   gossip = Gossip.create(
-    title: Faker::Name.first_name, 
+    title: Faker::Movie.quote, 
     content: Faker::Movies::HarryPotter.quote,
     user: User.all.sample
     )

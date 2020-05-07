@@ -17,7 +17,7 @@
     <p class="card-text"><%= gossip.user.first_name %></p>
     <a href="<%= gossip_path(gossip.id) %>" class="btn btn-outline-primary btn-sm">More</a>
     <a href="<%= edit_gossip_path(gossip.id) %>" class="btn btn-outline-success btn-sm">Edit</a>
-    <a href="<%= gossip_path(gossip.id) %>" class="btn btn-outline-danger btn-sm" data-confirm="êtes vous sûr?" data-method="delete" >Delete</a>
+    <a href="<%= gossip_path(gossip.id) %>" class="btn btn-outline-danger btn-sm" data-confirm="Really?" data-method="delete" >Delete</a>
   </div>
 </div>
     <% end %>

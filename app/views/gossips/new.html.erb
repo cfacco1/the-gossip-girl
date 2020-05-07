@@ -1,20 +1,21 @@
 <div class= row style= "display: flex; flex-flow: row wrap; justify-content: space-around">
- 
- <%= form_for @gossip do |f| %>
 
- 	<div class="form-group"> <label> Name of the Gossip </label>
-    <%= f.text_field :title, class: "form-control" %> 
+<%= form_tag url_for(action: 'create'), method: "post" do %>
+<img class="img-thumbnail" src="https://i.pinimg.com/originals/b7/a1/40/b7a1406b585e083dda35f044674c7d71.jpg" alt="Card image cap">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <div class='form-group'>
+          <%= label_tag 'Name of your gossip' %></br>
+          <%= text_field_tag 'title', @gossip.title, class: "form-control" %></br></br>
     </div>
 
-    <div class="form-group"> <label> Details </label>
-    <%= f.text_area :content, class: "form-control" %> 
+    <div class='form-group'>
+          <%= label_tag 'Juicy Content' %></br>
+          <%= text_area_tag 'content', @gossip.content, class: "form-control" %></br></br>
     </div>
 
-    <div class="form-group"> <label> Gossippers </label>
-    <%= f.text_field :user, class: "form-control" %> 
+    <div class='form-group'>
+        <button type="submit" class="btn btn-primary">Create gossip</button>
     </div>
+    
 
-    <div class="form-group"> <button type="submit" class="btn btn-primary">Post</button>
-    </div>
-
-    <%end%> 
+<% end %>

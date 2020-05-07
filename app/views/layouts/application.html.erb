@@ -9,6 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
   </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,7 +27,40 @@
             </li>
           </ul>
         </div>
+        <% unless session[:user_id] %>
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Login/Sign In
+          </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <%= link_to "Sign In", new_user_path, class: "nav-link" %>
+                    <%= link_to "Log In", new_session_path, class: "nav-link" %>
+          </div>
+        <% else %>
+          <div class="form-inline my-2 my-lg-0 nav-item">
+              <%= button_to "Bye Bye", session_path(session[:user_id]), method: :delete, class: "btn btn-primary" %>
+              </div>
+        <% end %>
     </nav>
-    <%= yield %>
+
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+
+        <div  style="max-width: 90%; margin: 40px auto">
+      <%= yield %>
+    </div>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   </body>
 </html>
+
+
+
+
+  </body>
+</html>
+
